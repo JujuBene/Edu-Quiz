@@ -1,0 +1,53 @@
+<!DOCTYPE html>   <!-- versão mais recente do HTML -->
+<html lang="pt-br"> <!-- idioma -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- faz que o layout seja responsivo -->
+    <title>Quem Sou Eu?</title> <!-- titulo da pagina -->
+    <link rel="stylesheet" href="style.css">  <!-- conecta arquivo css externo para estilizar a pagina -->
+</head>
+<body>
+    <div class="container" id="titleContainer">    <!-- ele centraliza o titulo e botao de personalização -->
+        <h1 class="title">Quem Sou Eu - Flash Cards</h1>   <!-- titulo do jogo -->
+        <button id="customizeButton">Personalizar Jogo</button> <!-- botão de personalizar -->
+    </div>
+
+    <div id="customizeModal" class="modal hidden"> <!-- calsse hidden para ficar invisivel -->
+        <h2>Personalize seu jogo</h2>   <!-- subtitulo -->
+        <div id="flashcards">
+            <div class="flashcard-container">
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Descrição" class="description-input">
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Resposta" class="answer-input">
+                    <button class="removeFlashcard">✖</button>
+                </div>
+            </div>
+        </div>
+
+
+        <button id="addFlashcard">+ Adicionar</button>  <!-- botão para adicionar mais flash cards -->
+        <button id="startGame">Começar Jogo</button>   <!-- botão de começar o jogo -->
+    </div>
+
+
+    
+    <div id="gameScreen" class="hidden">    
+        <h2 id="gameDescription"></h2>     <!-- titulo que exibirá a fase atual -->
+        <p id="answerPlaceholder"></p>      <!-- traços _ _ _ -->
+        <button id="hintButton">Dica (3 restantes)</button>   <!-- botão de dicas -->
+        <input type="text" id="guessInput" placeholder="Digite sua resposta">  <!-- campo de resposta -->
+        <button id="submitGuess">Enviar Resposta</button>    <!-- botão de enviar -->
+        <button id="restartDuringGame">Recomeçar</button> <!-- botão de recomeçar -->
+    </div>
+
+    <div id="endScreen" class="hidden">     <!-- container de mensagem de vitoria do jogo -->
+        <h2 id="endMessage"></h2>   <!-- titulo de vitoria do jogo -->
+        <button id="playAgain">Jogar Novamente</button>    <!-- botão para reiniciar -->
+        <button id="restartGame">Recomeçar</button>         <!-- botão de jogar novamente com os mesmos flash cards -->
+    </div>
+
+    <script src="script.js"></script>      <!-- conecta com JS -->
+</body>
+</html>

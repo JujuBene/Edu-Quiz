@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+/* importar fonte */
+
+body {
+    font-family: "Winky Rough", sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;    /* centraliza todo o texto na pagina */
+    padding: 0;             /* remove qualquer espaço interno ao redos do corpo da pagina */
+    margin: 0;            /* Remove qualquer margem externa ao redor do corpo da página. */
+    display: flex;         /* Torna o corpo da página um contêiner flexível. */
+    justify-content: center;          
+    align-items: center;
+    flex-direction: column;              /*organiza em forma de coluna*/
+    height: 100vh; /* Centralização vertical inicial */
+    overflow: auto; /* Evita rolagem desnecessária */
+}
+
+.title {
+    position: relative;
+    z-index: 10; /* Mantém o título acima de outros elementos */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+.flashcard {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre os elementos */
+}
+
+.flashcard-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.input-wrapper {
+    background-color: #ffffff; /* Fundo branco para cada campo */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Permite posicionar o botão "X" */
+}
+
+.removeFlashcard {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px; /* Agora o "X" está no canto superior direito */
+}
+
+.description-input,
+.answer-input {
+    width: 180px;
+    height: 35px;
+    padding: 6px;
+    font-size: 16px;
+    border: none; /* Remove borda padrão */
+    outline: none; /* Remove contorno ao focar */
+    background: transparent; /* Mantém a cor de fundo do wrapper */
+}
+
+.container {
+    transition: all 0.5s ease; /* Animação suave ao mover o menu */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.container.move-up {         /*movimento do titulo para cima*/
+    top: 10%;
+    transform: translate(-50%, 0); /* Move para cima */
+}
+
+h1 {        /* adicionaa espaço para separar do resto do conteudo */
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hidden {                   /* Oculta completamente o elemento da tela. Ele não ocupa espaço. */
+    display: none;
+}
+
+#flashcards {
+    max-height: 70vh; /* Limita a altura para facilitar a rolagem */
+    overflow-y: auto; /* Permite rolagem */
+    padding: 10px;
+}
+
+.modal {
+    background: #ffffff;   /* caixa branca das descrições */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    transition: opacity 0.5s ease;
+    opacity: 0; /* Inicialmente oculto */
+    max-height: 80vh; /* Ajuste para permitir que o conteúdo seja rolável */
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: block;        /* Faz o modal aparecer na tela. */
+    opacity: 1;
+}
+
+input {
+    margin: 5px;
+    padding: 8px;
+    width: 80%;
+}
+
+
+@media (max-width: 600px) {     /* para mobile */
+    body {
+        padding: 10px; /* Para evitar que os elementos fiquem apertados na tela */
+    }
+
+    .container {
+        top: 50%;
+        width: 90%; /* Ajusta o tamanho para caber melhor na tela pequena */
+    }
+
+    .modal {
+        width: 100%; /* Usa toda a largura disponível */
+        padding: 10px; /* Ajusta o padding para caber em telas pequenas */
+    }
+
+    button {
+        width: 100%; /* Botões mais largos para facilitar o toque */
+        padding: 15px; /* Torna os botões mais acessíveis */
+    }
+
+    input {
+        width: 90%; /* Ajusta os campos de entrada para serem mais responsivos */
+        font-size: 16px; /* Texto maior para melhorar a visibilidade */
+    }
+
+    h1, h2 {
+        font-size: 1.5rem; /* Ajusta o tamanho do texto dos títulos */
+    }
+}
