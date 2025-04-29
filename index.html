@@ -1,19 +1,22 @@
-<!DOCTYPE html>   <!-- versão mais recente do HTML -->
-<html lang="pt-br"> <!-- idioma -->
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- faz que o layout seja responsivo -->
-    <title>Quem Sou Eu?</title> <!-- titulo da pagina -->
-    <link rel="stylesheet" href="style.css">  <!-- conecta arquivo css externo para estilizar a pagina -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Sou Eu?</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="titleContainer">    <!-- ele centraliza o titulo e botao de personalização -->
-        <h1 class="title">Quem Sou Eu - Flash Cards</h1>   <!-- titulo do jogo -->
-        <button id="customizeButton">Personalizar Jogo</button> <!-- botão de personalizar -->
+    <!-- Tela Principal -->
+    <div class="container" id="titleContainer">
+        <h1 class="title">Edu Quizz</h1>
+        <button id="customizeButton">Personalizar Jogo</button>
+        <button id="preDefinitionsButton">Pré-definições</button> <!-- Botão de Pré-definições -->
     </div>
 
-    <div id="customizeModal" class="modal hidden"> <!-- calsse hidden para ficar invisivel -->
-        <h2>Personalize seu jogo</h2>   <!-- subtitulo -->
+    <!-- Modal de Personalização -->
+    <div id="customizeModal" class="modal hidden">
+        <h2>Personalize seu jogo</h2>
         <div id="flashcards">
             <div class="flashcard-container">
                 <div class="input-wrapper">
@@ -25,29 +28,72 @@
                 </div>
             </div>
         </div>
-
-
-        <button id="addFlashcard">+ Adicionar</button>  <!-- botão para adicionar mais flash cards -->
-        <button id="startGame">Começar Jogo</button>   <!-- botão de começar o jogo -->
+        <button id="addFlashcard">+ Adicionar</button>
+        <button id="startGame">Começar Jogo</button>
     </div>
 
-
-    
-    <div id="gameScreen" class="hidden">    
-        <h2 id="gameDescription"></h2>     <!-- titulo que exibirá a fase atual -->
-        <p id="answerPlaceholder"></p>      <!-- traços _ _ _ -->
-        <button id="hintButton">Dica (3 restantes)</button>   <!-- botão de dicas -->
-        <input type="text" id="guessInput" placeholder="Digite sua resposta">  <!-- campo de resposta -->
-        <button id="submitGuess">Enviar Resposta</button>    <!-- botão de enviar -->
-        <button id="restartDuringGame">Recomeçar</button> <!-- botão de recomeçar -->
+    <!-- Botão de Ajuda -->
+    <div class="help-container">
+        <button id="helpButton">❓</button>
     </div>
 
-    <div id="endScreen" class="hidden">     <!-- container de mensagem de vitoria do jogo -->
-        <h2 id="endMessage"></h2>   <!-- titulo de vitoria do jogo -->
-        <button id="playAgain">Jogar Novamente</button>    <!-- botão para reiniciar -->
-        <button id="restartGame">Recomeçar</button>         <!-- botão de jogar novamente com os mesmos flash cards -->
+    <!-- Modal de Ajuda -->
+    <div id="helpModal" class="modalHelp hidden">
+        <div class="modal-content">
+            <h2>Como Funciona o Jogo</h2>
+            <p>
+                🎯 <strong>Objetivo:</strong><br>
+                O jogo consiste em adivinhar palavras ou frases baseadas na descrição apresentada no flashcard.
+            </p>
+            <p>
+                🛠️ <strong>Como Personalizar:</strong><br>
+                - Clique em "Personalizar Jogo" para adicionar seus próprios flashcards.
+            </p>
+            <p>
+                🎮 <strong>Como Jogar:</strong><br>
+                - Leia a descrição, digite sua resposta e clique em "Enviar Resposta".
+            </p>
+            <p>
+                🆘 <strong>Botão de Dica:</strong><br>
+                - Use o botão "Dica" para revelar letras progressivamente.
+            </p>
+            <p>
+                🔄 <strong>Reiniciar o Jogo:</strong><br>
+                - Clique em "Recomeçar" para reiniciar o jogo.
+            </p>
+            <button id="closeHelp">Fechar</button>
+        </div>
     </div>
 
-    <script src="script.js"></script>      <!-- conecta com JS -->
+    <div id="preDefinitionsScreen" class="hidden">
+        <h2>Escolha uma Categoria</h2>
+        <div class="categories-buttons">
+            <button>Animais</button>
+            <button>História</button>
+            <button>Ciência</button>
+            <button>Esportes</button>
+            <button>Cinema</button>
+        </div>
+        <button id="backToMenu">Voltar</button>
+    </div>
+
+    <!-- Tela do Jogo -->
+    <div id="gameScreen" class="hidden">
+        <h2 id="gameDescription"></h2>
+        <p id="answerPlaceholder"></p>
+        <button id="hintButton">Dica (3 restantes)</button>
+        <input type="text" id="guessInput" placeholder="Digite sua resposta">
+        <button id="submitGuess">Enviar Resposta</button>
+        <button id="restartDuringGame">Recomeçar</button>
+    </div>
+
+    <!-- Tela Final -->
+    <div id="endScreen" class="hidden">
+        <h2 id="endMessage"></h2>
+        <button id="playAgain">Jogar Novamente</button>
+        <button id="restartGame">Recomeçar</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
