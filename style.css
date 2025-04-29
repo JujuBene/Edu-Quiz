@@ -4,27 +4,21 @@
 body {
     font-family: "Winky Rough", sans-serif;
     background-color: #f0f8ff;
-    text-align: center;    /* centraliza todo o texto na pagina */
-    padding: 0;             /* remove qualquer espaço interno ao redos do corpo da pagina */
-    margin: 0;            /* Remove qualquer margem externa ao redor do corpo da página. */
-    display: flex;         /* Torna o corpo da página um contêiner flexível. */
-    justify-content: center;          
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;              /*organiza em forma de coluna*/
-    height: 100vh; /* Centralização vertical inicial */
-    overflow: auto; /* Evita rolagem desnecessária */
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto; /* Ativa rolagem quando necessário */
 }
 
 .title {
     position: relative;
-    z-index: 10; /* Mantém o título acima de outros elementos */
-    margin-top: 20px; /* Espaçamento superior */
-}
-
-.flashcard {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre os elementos */
+    z-index: 10;
+    margin-top: 20px;
 }
 
 .flashcard-container {
@@ -35,13 +29,12 @@ body {
     position: relative;
 }
 
-
 .input-wrapper {
-    background-color: #ffffff; /* Fundo branco para cada campo */
+    background-color: #ffffff;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative; /* Permite posicionar o botão "X" */
+    position: relative;
 }
 
 .removeFlashcard {
@@ -52,7 +45,7 @@ body {
     cursor: pointer;
     position: absolute;
     top: 5px;
-    right: 5px; /* Agora o "X" está no canto superior direito */
+    right: 5px;
 }
 
 .description-input,
@@ -61,29 +54,12 @@ body {
     height: 35px;
     padding: 6px;
     font-size: 16px;
-    border: none; /* Remove borda padrão */
-    outline: none; /* Remove contorno ao focar */
-    background: transparent; /* Mantém a cor de fundo do wrapper */
+    border: none;
+    outline: none;
+    background: transparent;
 }
 
-.container {
-    transition: all 0.5s ease; /* Animação suave ao mover o menu */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
-
-.container.move-up {         /*movimento do titulo para cima*/
-    top: 10%;
-    transform: translate(-50%, 0); /* Move para cima */
-}
-
-h1 {        /* adicionaa espaço para separar do resto do conteudo */
-    margin-bottom: 20px;
-}
-
+/* Botões */
 button {
     padding: 10px 20px;
     margin: 10px;
@@ -92,68 +68,153 @@ button {
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease; /* Adiciona animação suave */
 }
 
-.hidden {                   /* Oculta completamente o elemento da tela. Ele não ocupa espaço. */
-    display: none;
+button:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
 }
 
-#flashcards {
-    max-height: 70vh; /* Limita a altura para facilitar a rolagem */
-    overflow-y: auto; /* Permite rolagem */
-    padding: 10px;
+
+.container {
+    transition: all 0.5s ease; /* Animação ao mover o menu */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
+.container.move-up {
+    top: 10%;
+    transform: translate(-50%, 0);
+}
+
+/* Modal */
 .modal {
-    background: #ffffff;   /* caixa branca das descrições */
+    background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     max-width: 500px;
     margin: 20px auto;
     transition: opacity 0.5s ease;
-    opacity: 0; /* Inicialmente oculto */
-    max-height: 80vh; /* Ajuste para permitir que o conteúdo seja rolável */
+    opacity: 0;
+    max-height: 80vh;
     overflow-y: auto;
 }
 
 .modal.show {
-    display: block;        /* Faz o modal aparecer na tela. */
+    display: block;
     opacity: 1;
 }
 
-input {
-    margin: 5px;
-    padding: 8px;
-    width: 80%;
+/* Modal de ajuda */
+.help-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
+#helpButton {
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
 
-@media (max-width: 600px) {     /* para mobile */
+.modalHelp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    width: 80%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content {
+    text-align: left;
+}
+
+#closeHelp {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Tela de Pré-definições */
+#preDefinitionsScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.categories-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.categories-buttons button {
+    flex: 1 0 calc(40% - 10px);
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo responsivo para mobile */
+@media (max-width: 600px) {
     body {
-        padding: 10px; /* Para evitar que os elementos fiquem apertados na tela */
+        padding: 10px;
     }
 
     .container {
-        top: 50%;
-        width: 90%; /* Ajusta o tamanho para caber melhor na tela pequena */
+        width: 90%;
     }
 
     .modal {
-        width: 100%; /* Usa toda a largura disponível */
-        padding: 10px; /* Ajusta o padding para caber em telas pequenas */
+        width: 100%;
+        padding: 10px;
     }
 
     button {
-        width: 100%; /* Botões mais largos para facilitar o toque */
-        padding: 15px; /* Torna os botões mais acessíveis */
+        width: 100%;
+        padding: 15px;
     }
 
     input {
-        width: 90%; /* Ajusta os campos de entrada para serem mais responsivos */
-        font-size: 16px; /* Texto maior para melhorar a visibilidade */
+        width: 90%;
+        font-size: 16px;
     }
 
     h1, h2 {
-        font-size: 1.5rem; /* Ajusta o tamanho do texto dos títulos */
+        font-size: 1.5rem;
     }
 }
