@@ -5,7 +5,7 @@ let revealedLetters = [];
 
 // Ocultar telas extras ao carregar a página
 window.onload = () => {
-    document.getElementById("preDefinitionsScreen").classList.add("hidden");
+    document.getElementById("preDefinitionsScreen").style.display="none";
     document.getElementById("customizeModal").classList.add("hidden");
     document.getElementById("gameScreen").classList.add("hidden");
     document.getElementById("endScreen").classList.add("hidden");
@@ -15,15 +15,16 @@ window.onload = () => {
 document.getElementById("preDefinitionsButton").addEventListener("click", () => {
     // Oculta a tela principal
     document.getElementById("titleContainer").classList.add("hidden");
+    
 
     // Exibe a tela de pré-definições
-    document.getElementById("preDefinitionsScreen").classList.remove("hidden");
+    document.getElementById("preDefinitionsScreen").style.display ="flex";;
 });
 
 // Voltar ao menu principal
 document.getElementById("backToMenu").addEventListener("click", () => {
     // Oculta a tela de pré-definições
-    document.getElementById("preDefinitionsScreen").classList.add("hidden");
+    document.getElementById("preDefinitionsScreen").style.display ="none";;
 
     // Exibe a tela principal novamente
     document.getElementById("titleContainer").classList.remove("hidden");
