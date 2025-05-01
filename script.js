@@ -23,11 +23,21 @@ document.getElementById("preDefinitionsButton").addEventListener("click", () => 
 
 // Voltar ao menu principal
 document.getElementById("backToMenu").addEventListener("click", () => {
-    // Oculta a tela de pré-definições
+        // Oculta a tela de pré-definições
     document.getElementById("preDefinitionsScreen").style.display ="none";;
 
     // Exibe a tela principal novamente
     document.getElementById("titleContainer").classList.remove("hidden");
+});
+// Voltar ao menu principal Customize
+document.getElementById("backToMenuCustomize").addEventListener("click", () => {
+        // Oculta a tela de pré-definições
+    document.getElementById("customizeModal").classList.remove("show");
+    document.getElementById("customizeModal").classList.add("hidden");
+
+    // Exibe a tela principal novamente
+    document.getElementById("titleContainer").classList.remove("hidden");
+    // document.getElementById("titleContainer").classList.add("show");
 });
 
 // Abrir tela de Personalização
