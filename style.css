@@ -48,6 +48,15 @@ body {
     right: 5px;
 }
 
+#guessInput {
+    width: 300px;
+    height: 25px;
+    padding: 6px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #007BFF;
+}
+
 .description-input,
 .answer-input {
     width: 180px;
@@ -71,11 +80,6 @@ button {
     transition: background-color 0.3s ease; /* Adiciona animação suave */
 }
 
-button:hover {
-    background-color: #0056b3; /* Cor ao passar o mouse */
-}
-
-
 .container {
     transition: all 0.5s ease; /* Animação ao mover o menu */
     position: absolute;
@@ -97,7 +101,7 @@ button:hover {
     max-width: 500px;
     margin: 20px auto;
     transition: opacity 0.5s ease;
-    opacity: 0;
+    opacity: 1;
     max-height: 80vh;
     overflow-y: auto;
 }
@@ -156,12 +160,10 @@ button:hover {
 
 .hidden {
     display: none;
-    
 }
 
 /* Tela de Pré-definições */
 #preDefinitionsScreen {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
