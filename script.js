@@ -5,7 +5,7 @@ let revealedLetters = [];
 
 // Ocultar telas extras ao carregar a página
 window.onload = () => {
-    document.getElementById("preDefinitionsScreen").style.display="none";
+    document.getElementById("preDefinitionsScreen").classList.add("hidden");
     document.getElementById("customizeModal").classList.add("hidden");
     document.getElementById("gameScreen").classList.add("hidden");
     document.getElementById("endScreen").classList.add("hidden");
@@ -15,40 +15,45 @@ window.onload = () => {
 document.getElementById("preDefinitionsButton").addEventListener("click", () => {
     // Oculta a tela principal
     document.getElementById("titleContainer").classList.add("hidden");
-    
 
     // Exibe a tela de pré-definições
-    document.getElementById("preDefinitionsScreen").style.display ="flex";;
+    document.getElementById("preDefinitionsScreen").classList.remove("hidden");
+    
 });
+
 
 // Voltar ao menu principal
 document.getElementById("backToMenu").addEventListener("click", () => {
-        // Oculta a tela de pré-definições
-    document.getElementById("preDefinitionsScreen").style.display ="none";;
+    // Oculta a tela de pré-definições
+    document.getElementById("preDefinitionsScreen").classList.add("hidden");
+    document.getElementById("customizeModal").classList.add("hidden");    
 
     // Exibe a tela principal novamente
     document.getElementById("titleContainer").classList.remove("hidden");
 });
+
 // Voltar ao menu principal Customize
 document.getElementById("backToMenuCustomize").addEventListener("click", () => {
-        // Oculta a tela de pré-definições
-    document.getElementById("customizeModal").classList.remove("show");
-    document.getElementById("customizeModal").classList.add("hidden");
+    // Oculta a tela de pré-definições
+document.getElementById("customizeModal").classList.remove("show");
+document.getElementById("customizeModal").classList.add("hidden");
 
-    // Exibe a tela principal novamente
-    document.getElementById("titleContainer").classList.remove("hidden");
-    // document.getElementById("titleContainer").classList.add("show");
+// Exibe a tela principal novamente
+document.getElementById("titleContainer").classList.remove("hidden");
+// document.getElementById("titleContainer").classList.add("show");
 });
+
 
 // Abrir tela de Personalização
 document.getElementById("customizeButton").addEventListener("click", () => {
     // Oculta a tela principal
     document.getElementById("titleContainer").classList.add("hidden");
+    
 
     // Exibe o modal de personalização
     const customizeModal = document.getElementById("customizeModal");
     customizeModal.classList.remove("hidden");
-    customizeModal.classList.add("show");
+    //customizeModal.classList.add("show");
 });
 
 // Abrir tela de Ajuda
