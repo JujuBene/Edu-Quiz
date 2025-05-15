@@ -97,6 +97,7 @@ function startCategoryGame(categoryName, questions) {
     loadCategoryCard(); // Carrega a primeira pergunta
 }
 
+
 // Reiniciar o número de dicas
 function resetCategoryHints() {
     hintsRemaining = 3;
@@ -115,6 +116,19 @@ function loadCategoryCard() {
 function updateCategoryAnswerPlaceholder() {
     document.getElementById("categoryAnswerPlaceholder").innerText = revealedLetters.join(" ");
 }
+
+
+function resetCategoryPredefinition(){
+    resetCategoryHints(); // Reinicia as dicas
+    loadCategoryCard(); // Carrega a primeira pergunta
+}
+
+// Recomeçando o jogo
+document.getElementById("restartCategoryGame").addEventListener("click", () => {
+    category = document.getElementById("categoryGameTitle").textContent.split(': ')
+    startCategoryGame(category[1],categoryQuestions[category[1]]);
+});
+
 
 // Dar dicas durante o jogo
 document.getElementById("categoryHintButton").addEventListener("click", () => {
