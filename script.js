@@ -157,6 +157,7 @@ document.getElementById("submitCategoryGuess").addEventListener("click", () => {
 
     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
         currentCard++;
+        resetHints();
         if (currentCard < flashcards.length) {
             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
             loadCategoryCard();
@@ -331,6 +332,11 @@ function loadCard() {
 function resetHints() {
     hintsRemaining = 3;
     document.getElementById("hintButton").innerText = `Dica (${hintsRemaining} restantes)`;
+}
+// Reiniciar número de dicas categorias
+function resetHints() {
+    hintsRemaining = 3;
+    document.getElementById("categoryHintButton").innerText = `Dica (${hintsRemaining} restantes)`;
 }
 
 // Atualizar traços ou letras reveladas
