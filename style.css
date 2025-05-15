@@ -56,24 +56,23 @@ body {
 }
 
 #categoryGuessInput {
-    width: 300px;
-    height: 50px;
-    padding: 10px;
     border-radius: 15px;
-    font-size: 16px;
     border: 2px solid #007BFF;
     margin: 20px 0;
+    width: 280px;
+    height: 35px;
+    padding: 6px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
 }
 
 #categoryAnswerPlaceholder {
     font-size: 20px;
     letter-spacing: 5px;
     margin-bottom: 20px;
+    
 }
-
-
-
-
 
 
 
@@ -167,6 +166,11 @@ button {
     opacity: 1;
 }
 
+
+
+
+
+
 /* Modal de ajuda */
 .help-container {
     position: absolute;
@@ -219,6 +223,10 @@ button {
     display: none;
 }
 
+
+
+
+
 /* Tela de Pré-definições */
 #preDefinitionsScreen {
     flex-direction: column;
@@ -248,6 +256,10 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+
+
+
 
 /* Estilo responsivo para mobile */
 @media (max-width: 600px) {
