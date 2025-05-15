@@ -22,6 +22,16 @@ document.getElementById("preDefinitionsButton").addEventListener("click", () => 
 });
 
 
+// Exibir tela de Pré-definições
+document.getElementById("backToPreDefinitionsButton").addEventListener("click", () => {
+    // Oculta a tela principal
+    document.getElementById("categoryGameScreen").classList.add("hidden");
+
+    // Exibe a tela de pré-definições
+    document.getElementById("preDefinitionsScreen").classList.remove("hidden");
+    
+});
+
 
 
 
