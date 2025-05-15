@@ -64,6 +64,16 @@ const categoryQuestions = {
     ],
 };
 
+
+function hideAllScreens() {
+    document.getElementById("titleContainer").classList.add("hidden");
+    document.getElementById("preDefinitionsScreen").classList.add("hidden");
+    document.getElementById("customizeModal").classList.add("hidden");
+    document.getElementById("gameScreen").classList.add("hidden");
+    document.getElementById("categoryGameScreen").classList.add("hidden"); // Agora oculta o modo de jogo das categorias
+    document.getElementById("endScreen").classList.add("hidden");
+}
+
 // Função para iniciar o jogo da categoria selecionada
 function startCategoryGame(categoryName, questions) {
     hideAllScreens(); // Oculta todas as telas
