@@ -91,10 +91,20 @@ function startCategoryGame(categoryName, questions) {
 
     document.getElementById("categoryGameTitle").innerText = `Categoria: ${categoryName}`; // Define o título
     currentCard = 0; // Reinicia o índice das perguntas
-    flashcards = questions; // Define as perguntas da categoria
+    flashcards = shuffleArray([...questions]); // Define as perguntas da categoria
     revealedLetters = Array(flashcards[currentCard].answer.length).fill("_"); // Define os traços
     resetCategoryHints(); // Reinicia as dicas
     loadCategoryCard(); // Carrega a primeira pergunta
+}
+
+
+// Embaralhar as questões do jogo
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
 
@@ -220,10 +230,13 @@ document.getElementById("customizeButton").addEventListener("click", () => {
 // Abrir tela de Ajuda
 document.getElementById("helpButton").addEventListener("click", () => {
     document.getElementById("helpModal").style.display = "block";
+    document.getElementById("helpModal").style.visibility = "visible";
+
 });
 
 // Fechar tela de Ajuda
 document.getElementById("closeHelp").addEventListener("click", () => {
+    document.getElementById("helpModal").style.visibility = "hidden";
     document.getElementById("helpModal").style.display = "none";
 });
 
@@ -306,6 +319,9 @@ document.getElementById("startGame").addEventListener("click", () => {
 document.getElementById("restartDuringGame").addEventListener("click", () => {
     location.reload();
 });
+
+
+
 
 // Função para iniciar o jogo
 function startGame() {
