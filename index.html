@@ -37,35 +37,7 @@
     <div class="help-container">
         <button id="helpButton">❓</button>
     </div>
-
-    <!-- Modal de Ajuda -->
-    <div id="helpModal" class="modalHelp hidden">
-        <div class="modal-content">
-            <h2>Como Funciona o Jogo</h2>
-            <p>
-                🎯 <strong>Objetivo:</strong><br>
-                O jogo consiste em adivinhar palavras ou frases baseadas na descrição apresentada no flashcard.
-            </p>
-            <p>
-                🛠️ <strong>Como Personalizar:</strong><br>
-                - Clique em "Personalizar Jogo" para adicionar seus próprios flashcards.
-            </p>
-            <p>
-                🎮 <strong>Como Jogar:</strong><br>
-                - Leia a descrição, digite sua resposta e clique em "Enviar Resposta".
-            </p>
-            <p>
-                🆘 <strong>Botão de Dica:</strong><br>
-                - Use o botão "Dica" para revelar letras progressivamente.
-            </p>
-            <p>
-                🔄 <strong>Reiniciar o Jogo:</strong><br>
-                - Clique em "Recomeçar" para reiniciar o jogo.
-            </p>
-            <button id="closeHelp">Fechar</button>
-        </div>
-    </div>
-
+    
     <div id="preDefinitionsScreen" class="hidden modalCategory">
         <h2>Escolha uma Categoria</h2>
         <div class="categories-buttons">
@@ -77,25 +49,25 @@
         </div>
         <button id="backToMenu">Voltar</button>
     </div>
-
-
-
-<!-- Tela de Jogo por Categoria -->
-<div id="categoryGameScreen" class="hidden" >
-    <h2 id="categoryGameTitle"></h2> <!-- Nome da Categoria -->
-    <p id="categoryGameDescription"></p> <!-- Descrição atual -->
-    <p id="categoryAnswerPlaceholder"></p> <!-- Traços para a resposta -->
-    <button id="categoryHintButton">Dica (3 restantes)</button> <!-- Botão de dicas -->
-    <input type="text" id="categoryGuessInput" placeholder="Digite sua resposta"> <!-- Campo de resposta -->
-    <button id="submitCategoryGuess">Enviar Resposta</button> <!-- Botão de enviar -->
-    <button id="restartCategoryGame">Recomeçar</button> <!-- Botão de recomeçar -->
-    <button id="backToPreDefinitionsButton">Voltar às Categorias</button> <!-- Botão para voltar -->
-</div>
-
-
-
-
-
+    
+    
+    
+    <!-- Tela de Jogo por Categoria -->
+    <div id="categoryGameScreen" class="hidden" >
+        <h2 id="categoryGameTitle"></h2> <!-- Nome da Categoria -->
+        <p id="categoryGameDescription"></p> <!-- Descrição atual -->
+        <p id="categoryAnswerPlaceholder"></p> <!-- Traços para a resposta -->
+        <button id="categoryHintButton">Dica (3 restantes)</button> <!-- Botão de dicas -->
+        <input type="text" id="categoryGuessInput" placeholder="Digite sua resposta"> <!-- Campo de resposta -->
+        <button id="submitCategoryGuess">Enviar Resposta</button> <!-- Botão de enviar -->
+        <button id="restartCategoryGame">Recomeçar</button> <!-- Botão de recomeçar -->
+        <button id="backToPreDefinitionsButton">Voltar às Categorias</button> <!-- Botão para voltar -->
+    </div>
+    
+    
+    
+    
+    
     <!-- Tela do Jogo -->
     <div id="gameScreen" class="hidden">
         <h2 id="gameDescription"></h2>
@@ -107,14 +79,42 @@
         <button id="submitGuess">Enviar Resposta</button>
         <button id="restartDuringGame">Recomeçar</button>
     </div>
-
+    
     <!-- Tela Final -->
     <div id="endScreen" class="hidden">
         <h2 id="endMessage"></h2>
         <button id="playAgain">Jogar Novamente</button>
         <button id="restartGame">Recomeçar</button>
     </div>
-
+    
+        <!-- Modal de Ajuda -->
+        <div id="helpModal" class="modalHelp hidden">
+            <div class="modal-content">
+                <h2>Como Funciona o Jogo</h2>
+                <p>
+                    🎯 <strong>Objetivo:</strong><br>
+                    O jogo consiste em adivinhar palavras ou frases baseadas na descrição apresentada no flashcard.
+                </p>
+                <p>
+                    🛠️ <strong>Como Personalizar:</strong><br>
+                    - Clique em "Personalizar Jogo" para adicionar seus próprios flashcards.
+                </p>
+                <p>
+                    🎮 <strong>Como Jogar:</strong><br>
+                    - Leia a descrição, digite sua resposta e clique em "Enviar Resposta".
+                </p>
+                <p>
+                    🆘 <strong>Botão de Dica:</strong><br>
+                    - Use o botão "Dica" para revelar letras progressivamente.
+                </p>
+                <p>
+                    🔄 <strong>Reiniciar o Jogo:</strong><br>
+                    - Clique em "Recomeçar" para reiniciar o jogo.
+                </p>
+                <button id="closeHelp">Fechar</button>
+            </div>
+        </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
