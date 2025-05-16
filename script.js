@@ -231,12 +231,15 @@ document.getElementById("customizeButton").addEventListener("click", () => {
 document.getElementById("helpButton").addEventListener("click", () => {
     document.getElementById("helpModal").style.display = "block";
     document.getElementById("helpModal").style.visibility = "visible";
+    document.getElementById("categoryGameScreen").style.visibility ="hidden";
+
 
 });
 
 // Fechar tela de Ajuda
 document.getElementById("closeHelp").addEventListener("click", () => {
     document.getElementById("helpModal").style.visibility = "hidden";
+    document.getElementById("categoryGameScreen").style.visibility = "visible";
     document.getElementById("helpModal").style.display = "none";
 });
 
