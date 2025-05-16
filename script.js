@@ -26,6 +26,8 @@ document.getElementById("preDefinitionsButton").addEventListener("click", () => 
 document.getElementById("backToPreDefinitionsButton").addEventListener("click", () => {
     // Oculta a tela principal
     document.getElementById("categoryGameScreen").classList.add("hidden");
+    document.getElementById("categoryGameScreen").style.visibility = "hidden";
+
 
     // Exibe a tela de pré-definições
     document.getElementById("preDefinitionsScreen").classList.remove("hidden");
@@ -88,6 +90,8 @@ function hideAllScreens() {
 function startCategoryGame(categoryName, questions) {
     hideAllScreens(); // Oculta todas as telas
     document.getElementById("categoryGameScreen").classList.remove("hidden"); // Exibe a tela de jogo da categoria
+    document.getElementById("categoryGameScreen").style.visibility = "visible"; // Exibe a tela de jogo da categoria
+
 
     document.getElementById("categoryGameTitle").innerText = `Categoria: ${categoryName}`; // Define o título
     currentCard = 0; // Reinicia o índice das perguntas
