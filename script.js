@@ -2,6 +2,9 @@ let flashcards = [];
 let currentCard = 0;
 let hintsRemaining = 3;
 let revealedLetters = [];
+let score = 0; // Inicializa a pontuação
+let hintsUsed = 0; // Conta quantas dicas foram usadas
+
 
 // Ocultar telas extras ao carregar a página
 window.onload = () => {
@@ -33,8 +36,6 @@ document.getElementById("backToPreDefinitionsButton").addEventListener("click", 
     document.getElementById("preDefinitionsScreen").classList.remove("hidden");
     
 });
-
-
 
 
 // Criando o banco de perguntas por categoria
@@ -112,6 +113,18 @@ function shuffleArray(array) {
 }
 
 
+// Atualizar a pontuação na tela
+function updateScore() {
+    document.getElementById("scoreCount").innerText = score;
+}
+
+
+
+
+
+
+
+
 // Reiniciar o número de dicas
 function resetCategoryHints() {
     hintsRemaining = 3;
@@ -156,6 +169,7 @@ document.getElementById("categoryHintButton").addEventListener("click", () => {
 
         revealedLetters[randomIndex] = answer[randomIndex];
         hintsRemaining--;
+        hintsUsed++; // Registra dica usada
 
         document.getElementById("categoryHintButton").innerText = `Dica (${hintsRemaining} restantes)`;
         updateCategoryAnswerPlaceholder();
@@ -190,6 +204,86 @@ document.querySelectorAll(".categories-buttons button").forEach(button => {
         startCategoryGame(button.innerText, categoryQuestions[button.innerText]);
     });
 });
+
+
+
+
+
+
+// Função para calcular pontos com base nas dicas usadas
+function calculatePoints() {
+    if (hintsUsed === 0) return 30; // Sem dicas
+    if (hintsUsed === 1) return 20; // Usou 1 dica
+    if (hintsUsed === 2) return 10; // Usou 2 dicas
+    return 0; // Usou todas as dicas
+}
+
+// Submeter Resposta no modo personalizado
+document.getElementById("submitGuess").addEventListener("click", () => {
+    const guess = document.getElementById("guessInput").value.trim();
+    const correctAnswer = flashcards[currentCard].answer;
+
+    if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+        score += calculatePoints(); // Soma pontos com base nas dicas usadas
+        updateScore();
+
+        hintsUsed = 0; // Reseta a contagem de dicas
+        currentCard++;
+
+        if (currentCard < flashcards.length) {
+            revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
+            loadCard();
+        } else {
+            showFinalScore(); // Exibe a tela final com a pontuação total
+        }
+    } else {
+        alert("Tente novamente!");
+    }
+});
+
+// Submeter Resposta no modo pré-definições
+document.getElementById("submitCategoryGuess").addEventListener("click", () => {
+    const guess = document.getElementById("categoryGuessInput").value.trim();
+    const correctAnswer = flashcards[currentCard].answer;
+
+    if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+        score += calculatePoints(); // Soma pontos corretamente
+        updateScore();
+
+        hintsUsed = 0;
+        currentCard++;
+
+        if (currentCard < flashcards.length) {
+            revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
+            loadCategoryCard();
+        } else {
+            showFinalScore(); // Exibe a tela final com os pontos
+        }
+    } else {
+        alert("Tente novamente!");
+    }
+});
+
+// Exibir Tela de Pontuação Final
+function showFinalScore() {
+    hideAllScreens();
+    document.getElementById("finalScoreScreen").classList.remove("hidden");
+    document.getElementById("finalScore").innerText = score;
+}
+
+// Reiniciar jogo após ver pontuação final
+document.getElementById("restartGameFinal").addEventListener("click", () => {
+    score = 0; // Resetar pontuação
+    updateScore();
+    location.reload();
+});
+
+document.getElementById("playAgainFinal").addEventListener("click", () => {
+    score = 0; // Resetar pontuação
+    updateScore();
+    location.reload();
+});
+
 
 
 
@@ -381,6 +475,7 @@ document.getElementById("hintButton").addEventListener("click", () => {
 
         revealedLetters[randomIndex] = answer[randomIndex];
         hintsRemaining--;
+        hintsUsed++; // Registra dica usada
 
         document.getElementById("hintButton").innerText = `Dica (${hintsRemaining} restantes)`;
         updateAnswerPlaceholder();
@@ -411,7 +506,7 @@ document.getElementById("submitGuess").addEventListener("click", () => {
 function endGame(won) {
     document.getElementById("gameScreen").classList.add("hidden");
     document.getElementById("endScreen").classList.remove("hidden");
-    document.getElementById("endMessage").innerText = won ? "Parabéns, você venceu!" : "Fim de Jogo!";
+   // document.getElementById("endMessage").innerText = won ? "Parabéns, você venceu!" : "Fim de Jogo!";
 }
 
 // Jogar Novamente
