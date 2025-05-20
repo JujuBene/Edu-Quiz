@@ -47,13 +47,8 @@ body {
     justify-content: center;
     position: absolute;
     
-}
 
-#gameScreen {
-    position: absolute;
-    
 }
-
 
 #categoryGameTitle {
     font-size: 24px;
@@ -160,8 +155,6 @@ button {
     transition: opacity 0.5s ease;
     max-height: 25vh;
     opacity: 1;
-    position: absolute;
-
     /* position: absolute; */
 
 }
@@ -229,6 +222,33 @@ button {
     visibility: hidden;
     display: none;
 }
+
+
+
+/*pontuação */
+#scoreContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Ajusta para o canto esquerdo */
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste para a tela final */
+#finalScoreScreen {
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+
 
 
 
