@@ -21,7 +21,7 @@ document.getElementById("preDefinitionsButton").addEventListener("click", () => 
 
     // Exibe a tela de pré-definições
     document.getElementById("preDefinitionsScreen").classList.remove("hidden");
-    
+
 });
 
 
@@ -34,7 +34,7 @@ document.getElementById("backToPreDefinitionsButton").addEventListener("click", 
 
     // Exibe a tela de pré-definições
     document.getElementById("preDefinitionsScreen").classList.remove("hidden");
-    
+
 });
 
 
@@ -145,7 +145,7 @@ function updateCategoryAnswerPlaceholder() {
 }
 
 
-function resetCategoryPredefinition(){
+function resetCategoryPredefinition() {
     resetCategoryHints(); // Reinicia as dicas
     loadCategoryCard(); // Carrega a primeira pergunta
 }
@@ -153,7 +153,7 @@ function resetCategoryPredefinition(){
 // Recomeçando o jogo
 document.getElementById("restartCategoryGame").addEventListener("click", () => {
     category = document.getElementById("categoryGameTitle").textContent.split(': ')
-    startCategoryGame(category[1],categoryQuestions[category[1]]);
+    startCategoryGame(category[1], categoryQuestions[category[1]]);
 });
 
 
@@ -184,14 +184,19 @@ document.getElementById("submitCategoryGuess").addEventListener("click", () => {
     const correctAnswer = flashcards[currentCard].answer;
 
     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+         score += calculatePoints(); // Soma pontos corretamente
+        updateScore();
+        hintsUsed = 0;
         currentCard++;
         resetHints();
         if (currentCard < flashcards.length) {
             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
             loadCategoryCard();
         } else {
-            alert("Parabéns! Você completou todas as perguntas.");
-            document.getElementById("backToCategories").click();
+
+            endGame(false)
+            // alert("Parabéns! Você completou todas as perguntas.");
+            // document.getElementById("backToCategories").click();
         }
     } else {
         alert("Tente novamente!");
@@ -207,7 +212,7 @@ document.querySelectorAll(".categories-buttons button").forEach(button => {
 
 
 
-
+// Aqui é onde a juliana colocou o codigo.
 
 
 // Função para calcular pontos com base nas dicas usadas
@@ -218,71 +223,41 @@ function calculatePoints() {
     return 0; // Usou todas as dicas
 }
 
-// Submeter Resposta no modo personalizado
-document.getElementById("submitGuess").addEventListener("click", () => {
-    const guess = document.getElementById("guessInput").value.trim();
-    const correctAnswer = flashcards[currentCard].answer;
+// // Submeter Resposta no modo pré-definições
+// document.getElementById("submitCategoryGuess").addEventListener("click", () => {
+//     const guess = document.getElementById("categoryGuessInput").value.trim();
+//     const correctAnswer = flashcards[currentCard].answer;
 
-    if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
-        score += calculatePoints(); // Soma pontos com base nas dicas usadas
-        updateScore();
+//     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+//         score += calculatePoints(); // Soma pontos corretamente
+//         updateScore();
 
-        hintsUsed = 0; // Reseta a contagem de dicas
-        currentCard++;
+//         hintsUsed = 0;
+//         currentCard++;
 
-        if (currentCard < flashcards.length) {
-            revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
-            loadCard();
-        } else {
-            showFinalScore(); // Exibe a tela final com a pontuação total
-        }
-    } else {
-        alert("Tente novamente!");
-    }
-});
-
-// Submeter Resposta no modo pré-definições
-document.getElementById("submitCategoryGuess").addEventListener("click", () => {
-    const guess = document.getElementById("categoryGuessInput").value.trim();
-    const correctAnswer = flashcards[currentCard].answer;
-
-    if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
-        score += calculatePoints(); // Soma pontos corretamente
-        updateScore();
-
-        hintsUsed = 0;
-        currentCard++;
-
-        if (currentCard < flashcards.length) {
-            revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
-            loadCategoryCard();
-        } else {
-            showFinalScore(); // Exibe a tela final com os pontos
-        }
-    } else {
-        alert("Tente novamente!");
-    }
-});
-
-// Exibir Tela de Pontuação Final
-function showFinalScore() {
-    hideAllScreens();
-    document.getElementById("finalScoreScreen").classList.remove("hidden");
-    document.getElementById("finalScore").innerText = score;
-}
+//         if (currentCard < flashcards.length) {
+//             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
+//             loadCategoryCard();
+//         } else {
+//             showFinalScore(); // Exibe a tela final com os pontos
+//         }
+//     } else {
+//         alert("Tente novamente!");
+//     }
+// });
 
 // Reiniciar jogo após ver pontuação final
-document.getElementById("restartGameFinal").addEventListener("click", () => {
+function restartGameFinal(){
     score = 0; // Resetar pontuação
     updateScore();
-    location.reload();
-});
+    // location.reload();
+};
 
-document.getElementById("playAgainFinal").addEventListener("click", () => {
-    score = 0; // Resetar pontuação
-    updateScore();
-    location.reload();
-});
+// document.getElementById("playAgainFinal").addEventListener("click", () => {
+//     score = 0; // Resetar pontuação
+//     updateScore();
+//     location.reload();
+// });
 
 
 
@@ -295,7 +270,7 @@ document.getElementById("playAgainFinal").addEventListener("click", () => {
 document.getElementById("backToMenu").addEventListener("click", () => {
     // Oculta a tela de pré-definições
     document.getElementById("preDefinitionsScreen").classList.add("hidden");
-    document.getElementById("customizeModal").classList.add("hidden");    
+    document.getElementById("customizeModal").classList.add("hidden");
 
     // Exibe a tela principal novamente
     document.getElementById("titleContainer").classList.remove("hidden");
@@ -304,12 +279,12 @@ document.getElementById("backToMenu").addEventListener("click", () => {
 // Voltar ao menu principal Customize
 document.getElementById("backToMenuCustomize").addEventListener("click", () => {
     // Oculta a tela de pré-definições
-document.getElementById("customizeModal").classList.remove("show");
-document.getElementById("customizeModal").classList.add("hidden");
+    document.getElementById("customizeModal").classList.remove("show");
+    document.getElementById("customizeModal").classList.add("hidden");
 
-// Exibe a tela principal novamente
-document.getElementById("titleContainer").classList.remove("hidden");
-// document.getElementById("titleContainer").classList.add("show");
+    // Exibe a tela principal novamente
+    document.getElementById("titleContainer").classList.remove("hidden");
+    // document.getElementById("titleContainer").classList.add("show");
 });
 
 
@@ -317,7 +292,7 @@ document.getElementById("titleContainer").classList.remove("hidden");
 document.getElementById("customizeButton").addEventListener("click", () => {
     // Oculta a tela principal
     document.getElementById("titleContainer").classList.add("hidden");
-    
+
 
     // Exibe o modal de personalização
     const customizeModal = document.getElementById("customizeModal");
@@ -330,7 +305,7 @@ document.getElementById("helpButton").addEventListener("click", () => {
     document.getElementById("helpModal").style.display = "block";
     document.getElementById("helpModal").style.visibility = "visible";
     document.getElementById("categoryGameScreen").style.position = " ";
-    
+
     // document.getElementById("categoryGameScreen").style.visibility ="hidden";
 
 
@@ -490,7 +465,11 @@ document.getElementById("submitGuess").addEventListener("click", () => {
     const correctAnswer = flashcards[currentCard].answer;
 
     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
+        score += calculatePoints(); // Soma pontos com base nas dicas usadas
+        updateScore();
+        hintsUsed = 0; // Reseta a contagem de dicas
         currentCard++;
+
         if (currentCard < flashcards.length) {
             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
             loadCard();
@@ -504,9 +483,15 @@ document.getElementById("submitGuess").addEventListener("click", () => {
 
 // Finalizar Jogo
 function endGame(won) {
-    document.getElementById("gameScreen").classList.add("hidden");
+    let screen = won ? "gameScreen":"categoryGameScreen"
+
+    hideAllScreens();
+    document.getElementById(screen).classList.add("hidden");
+    won? null:document.getElementById(screen).style.visibility="hidden"
     document.getElementById("endScreen").classList.remove("hidden");
-   // document.getElementById("endMessage").innerText = won ? "Parabéns, você venceu!" : "Fim de Jogo!";
+    document.getElementById("finalScore").innerText = score;
+    restartGameFinal()
+    // document.getElementById("endMessage").innerText = won ? "Parabéns, você venceu!" : "Fim de Jogo!";
 }
 
 // Jogar Novamente
