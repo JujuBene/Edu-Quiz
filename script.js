@@ -27,11 +27,11 @@ document.getElementById("preDefinitionsButton").addEventListener("click", () => 
 
 // Exibir tela de Pré-definições
 document.getElementById("backToPreDefinitionsButton").addEventListener("click", () => {
+    document.getElementById("scoreCount").textContent = 0;
     // Oculta a tela principal
     document.getElementById("categoryGameScreen").classList.add("hidden");
     document.getElementById("categoryGameScreen").style.visibility = "hidden";
-
-
+    
     // Exibe a tela de pré-definições
     document.getElementById("preDefinitionsScreen").classList.remove("hidden");
 
