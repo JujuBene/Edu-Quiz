@@ -33,6 +33,53 @@
         <button id="backToMenuCustomize">Voltar</button>
     </div>
 
+
+
+<!-- Tela de Jogo por Categoria -->
+<div id="categoryGameScreen" class="hidden">
+    <h2 id="categoryGameTitle"></h2> <!-- Nome da Categoria -->
+    <p id="categoryGameDescription"></p> <!-- Descrição atual -->
+    <p id="categoryAnswerPlaceholder"></p> <!-- Traços para a resposta -->
+    <button id="categoryHintButton">Dica (3 restantes)</button> <!-- Botão de dicas -->
+    <input type="text" id="categoryGuessInput" placeholder="Digite sua resposta"> <!-- Campo de resposta -->
+    <button id="submitCategoryGuess">Enviar Resposta</button> <!-- Botão de enviar -->
+    <button id="restartCategoryGame">Recomeçar</button> <!-- Botão de recomeçar -->
+    <button id="backToPreDefinitionsButton">Voltar às Categorias</button> <!-- Botão para voltar -->
+</div>
+
+
+
+
+
+    <!-- Tela do Jogo -->
+    <div id="gameScreen" class="hidden">
+        <h2 id="gameDescription"></h2>
+        <p id="answerPlaceholder"></p>
+        <button id="hintButton">Dica (3 restantes)</button>
+        <br>
+        <input type="text" id="guessInput" placeholder="Digite sua resposta">
+        <br>
+        <button id="submitGuess">Enviar Resposta</button>
+        <button id="restartDuringGame">Recomeçar</button>
+    </div>
+
+
+<!-- Exibição da Pontuação no canto superior esquerdo -->
+<div id="scoreContainer">
+    <p>Pontos: <span id="scoreCount">0</span></p>
+</div>
+
+
+    <!-- Tela Final -->
+    <div id="endScreen" class="hidden">
+        <h2> Parabéns, você finalizou o jogo! </h2>
+        <p>Sua pontuação total foi <span id="finalScore">0</span> pontos.</p>
+        <button id="playAgain">Jogar Novamente</button>
+        <button id="restartGame">Recomeçar</button>
+    </div>
+
+
+    
     <!-- Botão de Ajuda -->
     <div class="help-container">
         <button id="helpButton">❓</button>
@@ -117,50 +164,6 @@
         <button id="backToMenu">Voltar</button>
     </div>
 
-
-
-<!-- Tela de Jogo por Categoria -->
-<div id="categoryGameScreen" class="hidden">
-    <h2 id="categoryGameTitle"></h2> <!-- Nome da Categoria -->
-    <p id="categoryGameDescription"></p> <!-- Descrição atual -->
-    <p id="categoryAnswerPlaceholder"></p> <!-- Traços para a resposta -->
-    <button id="categoryHintButton">Dica (3 restantes)</button> <!-- Botão de dicas -->
-    <input type="text" id="categoryGuessInput" placeholder="Digite sua resposta"> <!-- Campo de resposta -->
-    <button id="submitCategoryGuess">Enviar Resposta</button> <!-- Botão de enviar -->
-    <button id="restartCategoryGame">Recomeçar</button> <!-- Botão de recomeçar -->
-    <button id="backToPreDefinitionsButton">Voltar às Categorias</button> <!-- Botão para voltar -->
-</div>
-
-
-
-
-
-    <!-- Tela do Jogo -->
-    <div id="gameScreen" class="hidden">
-        <h2 id="gameDescription"></h2>
-        <p id="answerPlaceholder"></p>
-        <button id="hintButton">Dica (3 restantes)</button>
-        <br>
-        <input type="text" id="guessInput" placeholder="Digite sua resposta">
-        <br>
-        <button id="submitGuess">Enviar Resposta</button>
-        <button id="restartDuringGame">Recomeçar</button>
-    </div>
-
-
-<!-- Exibição da Pontuação no canto superior esquerdo -->
-<div id="scoreContainer">
-    <p>Pontos: <span id="scoreCount">0</span></p>
-</div>
-
-
-    <!-- Tela Final -->
-    <div id="endScreen" class="hidden">
-        <h2> Parabéns, você finalizou o jogo! </h2>
-        <p>Sua pontuação total foi <span id="finalScore">0</span> pontos.</p>
-        <button id="playAgain">Jogar Novamente</button>
-        <button id="restartGame">Recomeçar</button>
-    </div>
 
     <script src="script.js"></script>
 </body>
