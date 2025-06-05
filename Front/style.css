@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+/* importar fonte */
+
+body {
+    font-family: "Winky Rough", sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto; /* Ativa rolagem quando necessário */
+}
+
+.title {
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+}
+
+.flashcard-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.input-wrapper {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+
+
+#categoryGameScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    
+
+}
+
+#categoryGameTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#categoryGuessInput {
+    border-radius: 15px;
+    border: 2px solid #007BFF;
+    margin: 20px 0;
+    width: 280px;
+    height: 35px;
+    padding: 6px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+}
+
+#categoryAnswerPlaceholder {
+    font-size: 20px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    
+}
+
+
+
+
+.removeFlashcard {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+#guessInput {
+    width: 300px;
+    height: 25px;
+    padding: 6px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #007BFF;
+}
+
+.description-input,
+.answer-input {
+    width: 180px;
+    height: 35px;
+    padding: 6px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+/* Botões */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Adiciona animação suave */
+}
+
+.container {
+    transition: all 0.5s ease; /* Animação ao mover o menu */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container.move-up {
+    top: 10%;
+    transform: translate(-50%, 0);
+}
+
+/* Modal */
+.modal {
+    flex-direction: column;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    max-height: 80vh;
+    position: absolute;
+    /* overflow-y: 10px; */
+}
+
+
+.modalCategory{
+    flex-direction: column;
+    margin: 20px auto;
+    transition: opacity 0.5s ease;
+    max-height: 25vh;
+    opacity: 1;
+    /* position: absolute; */
+
+}
+
+
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+
+
+
+
+
+/* Modal de ajuda */
+.help-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#helpButton {
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.modalHelp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    width: 80%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content {
+    text-align: left;
+}
+
+#closeHelp {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+
+
+/*pontuação */
+#scoreContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Ajusta para o canto esquerdo */
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste para a tela final */
+#finalScoreScreen {
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+
+
+
+
+
+
+/* Tela de Pré-definições */
+#preDefinitionsScreen {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.categories-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.categories-buttons button {
+    flex: 1 0 calc(40% - 10px);
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+/* Estilo responsivo para mobile */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .modal {
+        width: 100%;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+    }
+
+    input {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+}
