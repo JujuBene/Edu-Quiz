@@ -394,8 +394,12 @@ document.getElementById("startGame").addEventListener("click", () => {
 });
 
 // Recomeçar Jogo
-document.getElementById("restartDuringGame").addEventListener("click", () => {
-    location.reload();
+document.getElementById("restartCategoryGame").addEventListener("click", () => {
+    
+    document.getElementById("scoreCount").textContent = 0;
+    category = document.getElementById("categoryGameTitle").textContent.split(': ')
+    startCategoryGame(category[1], categoryQuestions[category[1]]);
+
 });
 
 
