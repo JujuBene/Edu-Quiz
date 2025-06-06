@@ -500,7 +500,14 @@ function endGame(won) {
 
 // Jogar Novamente
 document.getElementById("playAgain").addEventListener("click", () => {
-    startGame();
+    category = document.getElementById("categoryGameTitle").textContent.split(': ')
+    categoryValidation = document.getElementById("guessInput")
+    if(categoryValidation){
+        document.getElementById("endScreen").classList.add("hidden");
+        document.getElementById("gameScreen").classList.remove("hidden");
+        return
+    }
+    startCategoryGame(category[1], categoryQuestions[category[1]]);
 });
 
 // Recarregar para reinício completo
