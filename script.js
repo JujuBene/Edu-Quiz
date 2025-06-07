@@ -30,7 +30,7 @@ document.getElementById("backToPreDefinitionsButton").addEventListener("click", 
     document.getElementById("scoreCount").textContent = 0;
     // Oculta a tela principal
     document.getElementById("categoryGameScreen").classList.add("hidden");
-    document.getElementById("categoryGameScreen").style.visibility = "hidden";
+    // document.getElementById("categoryGameScreen").style.visibility = "hidden";
     
     // Exibe a tela de pré-definições
     document.getElementById("preDefinitionsScreen").classList.remove("hidden");
@@ -91,7 +91,7 @@ function hideAllScreens() {
 function startCategoryGame(categoryName, questions) {
     hideAllScreens(); // Oculta todas as telas
     document.getElementById("categoryGameScreen").classList.remove("hidden"); // Exibe a tela de jogo da categoria
-    document.getElementById("categoryGameScreen").style.visibility = "visible"; // Exibe a tela de jogo da categoria
+    // document.getElementById("categoryGameScreen").style.visibility = "visible"; // Exibe a tela de jogo da categoria
 
 
     document.getElementById("categoryGameTitle").innerText = `Categoria: ${categoryName}`; // Define o título
@@ -152,8 +152,11 @@ function resetCategoryPredefinition() {
 
 // Recomeçando o jogo
 document.getElementById("restartCategoryGame").addEventListener("click", () => {
+    
+    document.getElementById("scoreCount").textContent = 0;
     category = document.getElementById("categoryGameTitle").textContent.split(': ')
     startCategoryGame(category[1], categoryQuestions[category[1]]);
+
 });
 
 
@@ -182,13 +185,13 @@ document.getElementById("categoryHintButton").addEventListener("click", () => {
 document.getElementById("submitCategoryGuess").addEventListener("click", () => {
     const guess = document.getElementById("categoryGuessInput").value.trim();
     const correctAnswer = flashcards[currentCard].answer;
-
+    document.getElementById("categoryGuessInput").focus();
     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
          score += calculatePoints(); // Soma pontos corretamente
         updateScore();
         hintsUsed = 0;
         currentCard++;
-        resetHints();
+        resetHintsCategory();
         if (currentCard < flashcards.length) {
             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
             loadCategoryCard();
@@ -223,28 +226,7 @@ function calculatePoints() {
     return 0; // Usou todas as dicas
 }
 
-// // Submeter Resposta no modo pré-definições
-// document.getElementById("submitCategoryGuess").addEventListener("click", () => {
-//     const guess = document.getElementById("categoryGuessInput").value.trim();
-//     const correctAnswer = flashcards[currentCard].answer;
 
-//     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
-//         score += calculatePoints(); // Soma pontos corretamente
-//         updateScore();
-
-//         hintsUsed = 0;
-//         currentCard++;
-
-//         if (currentCard < flashcards.length) {
-//             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
-//             loadCategoryCard();
-//         } else {
-//             showFinalScore(); // Exibe a tela final com os pontos
-//         }
-//     } else {
-//         alert("Tente novamente!");
-//     }
-// });
 
 // Reiniciar jogo após ver pontuação final
 function restartGameFinal(){
@@ -252,14 +234,6 @@ function restartGameFinal(){
     updateScore();
     // location.reload();
 };
-
-// document.getElementById("playAgainFinal").addEventListener("click", () => {
-//     score = 0; // Resetar pontuação
-//     updateScore();
-//     location.reload();
-// });
-
-
 
 
 
@@ -389,32 +363,38 @@ document.getElementById("startGame").addEventListener("click", () => {
         document.getElementById("customizeModal").classList.add("hidden");
         document.getElementById("gameScreen").classList.remove("hidden");
 
-        startGame();
+        startGame(true);
     }
 });
 
 // Recomeçar Jogo
-document.getElementById("restartCategoryGame").addEventListener("click", () => {
-    
-    document.getElementById("scoreCount").textContent = 0;
-    category = document.getElementById("categoryGameTitle").textContent.split(': ')
-    startCategoryGame(category[1], categoryQuestions[category[1]]);
-
+document.getElementById("restartDuringGame").addEventListener("click", () => {
+    location.reload();
 });
 
 
 
 
 // Função para iniciar o jogo
-function startGame() {
+function startGame(won) {
     currentCard = 0;
-    resetHints();
     revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
+    resetHints();
 
-    document.getElementById("endScreen").classList.add("hidden");
-    document.getElementById("gameScreen").classList.remove("hidden");
-
-    loadCard();
+    let endScreen = won ? "endScreen" : "CategoryEndScreen"
+    let gameScreen = won ? "gameScreen" : "categoryGameScreen"
+    
+    
+    console.log(endScreen)
+    console.log(gameScreen)
+    // document.getElementById(gameScreen).style.visibility="visible";
+    document.getElementById(gameScreen).classList.remove("hidden");
+    document.getElementById(gameScreen).style.visibility="visible";
+    document.getElementById(endScreen).classList.add("hidden");
+    
+    won ? loadCard():loadCategoryCard();
+    
+    
 }
 
 // Carregar Flashcard
@@ -432,7 +412,7 @@ function resetHints() {
     document.getElementById("hintButton").innerText = `Dica (${hintsRemaining} restantes)`;
 }
 // Reiniciar número de dicas categorias
-function resetHints() {
+function resetHintsCategory(){
     hintsRemaining = 3;
     document.getElementById("categoryHintButton").innerText = `Dica (${hintsRemaining} restantes)`;
 }
@@ -467,7 +447,6 @@ document.getElementById("hintButton").addEventListener("click", () => {
 document.getElementById("submitGuess").addEventListener("click", () => {
     const guess = document.getElementById("guessInput").value.trim();
     const correctAnswer = flashcards[currentCard].answer;
-
     if (guess.toLowerCase() === correctAnswer.toLowerCase()) {
         score += calculatePoints(); // Soma pontos com base nas dicas usadas
         updateScore();
@@ -488,29 +467,28 @@ document.getElementById("submitGuess").addEventListener("click", () => {
 // Finalizar Jogo
 function endGame(won) {
     let screen = won ? "gameScreen":"categoryGameScreen"
+    let screenEndgame = won ? "endScreen":"CategoryEndScreen"
+    finalScore = won?"finalScore":"CategoryfinalScore"
 
     hideAllScreens();
     document.getElementById(screen).classList.add("hidden");
     won? null:document.getElementById(screen).style.visibility="hidden"
-    document.getElementById("endScreen").classList.remove("hidden");
-    document.getElementById("finalScore").innerText = score;
+    document.getElementById(screenEndgame).classList.remove("hidden");
+    document.getElementById(finalScore).innerText = score;
+
     restartGameFinal()
     // document.getElementById("endMessage").innerText = won ? "Parabéns, você venceu!" : "Fim de Jogo!";
 }
 
 // Jogar Novamente
 document.getElementById("playAgain").addEventListener("click", () => {
-    category = document.getElementById("categoryGameTitle").textContent.split(': ')
-    categoryValidation = document.getElementById("guessInput")
-    if(categoryValidation){
-        document.getElementById("endScreen").classList.add("hidden");
-        document.getElementById("gameScreen").classList.remove("hidden");
-        return
-    }
-    startCategoryGame(category[1], categoryQuestions[category[1]]);
+    startGame(true);
+});
+document.getElementById("CategoryplayAgain").addEventListener("click", () => {
+    startGame(false);
 });
 
 // Recarregar para reinício completo
-document.getElementById("restartGame").addEventListener("click", () => {
+document.getElementById("CategoryrestartGame").addEventListener("click", () => {
     location.reload();
 });

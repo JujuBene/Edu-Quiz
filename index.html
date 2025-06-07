@@ -57,7 +57,7 @@
         <p id="answerPlaceholder"></p>
         <button id="hintButton">Dica (3 restantes)</button>
         <br>
-        <input type="text" id="guessInput" class="pedro" placeholder="Digite sua resposta">
+        <input type="text" id="guessInput" placeholder="Digite sua resposta">
         <br>
         <button id="submitGuess">Enviar Resposta</button>
         <button id="restartDuringGame">Recomeçar</button>
@@ -78,11 +78,19 @@
         <button id="restartGame">Recomeçar</button>
     </div>
 
+    <!-- Tela Final -->
+    <div id="CategoryEndScreen" class="hidden">
+        <h2> Parabéns, você finalizou o jogo! </h2>
+        <p>Sua pontuação total foi <span id="CategoryfinalScore">0</span> pontos.</p>
+        <button id="CategoryplayAgain">Jogar Novamente</button>
+        <button id="CategoryrestartGame">Recomeçar</button>
+    </div>
+
 
     
     <!-- Botão de Ajuda -->
     <div class="help-container">
-        <button id="helpButton">❓</button>
+        <button id="helpButton" aria-label="Abrir instruções do jogo">❓</button>
     </div>
 
     <!-- Modal de Ajuda -->
