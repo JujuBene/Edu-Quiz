@@ -492,3 +492,6 @@ document.getElementById("CategoryplayAgain").addEventListener("click", () => {
 document.getElementById("CategoryrestartGame").addEventListener("click", () => {
     location.reload();
 });
+document.getElementById("restartGame").addEventListener("click", () => {
+    location.reload();
+});
