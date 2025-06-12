@@ -93,6 +93,7 @@ function startCategoryGame(categoryName, questions) {
     hideAllScreens(); // Oculta todas as telas
     document.getElementById("categoryGameScreen").classList.remove("hidden"); // Exibe a tela de jogo da categoria
     // document.getElementById("categoryGameScreen").style.visibility = "visible"; // Exibe a tela de jogo da categoria
+    // document.getElementById("categoryGameScreen").style.visibility = "visible"; // Exibe a tela de jogo da categoria
 
 
     document.getElementById("categoryGameTitle").innerText = `Categoria: ${categoryName}`; // Define o título
@@ -171,7 +172,7 @@ function resetCategoryPredefinition() {
 
 // Recomeçando o jogo
 document.getElementById("restartCategoryGame").addEventListener("click",async () => {
-
+    score=0
     document.getElementById("scoreCount").textContent = 0;
     category = document.getElementById("categoryGameTitle").textContent.split(': ')
     const questions = await consultQuestions(category);
@@ -218,6 +219,7 @@ document.getElementById("submitCategoryGuess").addEventListener("click", async (
         hintsUsed = 0;
         currentCard++;
         resetHintsCategory();
+        resetHintsCategory();
         if (currentCard < flashcards.length) {
             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
             loadCategoryCard();
@@ -258,6 +260,7 @@ function calculatePoints() {
     if (hintsUsed === 2) return 10; // Usou 2 dicas
     return 0; // Usou todas as dicas
 }
+
 
 
 
@@ -397,6 +400,7 @@ document.getElementById("startGame").addEventListener("click", () => {
         document.getElementById("gameScreen").classList.remove("hidden");
 
         startGame(true);
+        startGame(true);
     }
 });
 
@@ -409,6 +413,7 @@ document.getElementById("restartDuringGame").addEventListener("click", () => {
 
 
 // Função para iniciar o jogo
+
 function startGame(won) {
     currentCard = 0;
     revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
@@ -515,6 +520,10 @@ function endGame(won) {
 
 // Jogar Novamente
 document.getElementById("playAgain").addEventListener("click", () => {
+    startGame(true);
+});
+document.getElementById("CategoryplayAgain").addEventListener("click", () => {
+    startGame(false);
     startGame(true);
 });
 document.getElementById("CategoryplayAgain").addEventListener("click", () => {
