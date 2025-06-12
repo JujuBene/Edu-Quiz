@@ -7,7 +7,7 @@ let score = 0; // Inicializa a pontuação
 let hintsUsed = 0; // Conta quantas dicas foram usadas
 const loadingSpinner = document.getElementById("loadingSpinner");
 
-consultQuestions();
+consultQuestions("Animais");
 
 // Ocultar telas extras ao carregar a página
 window.onload = () => {
