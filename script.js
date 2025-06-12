@@ -138,8 +138,15 @@ document.getElementById("restartCategoryGame").addEventListener("click",async ()
     score=0
     document.getElementById("scoreCount").textContent = 0;
     let category = document.getElementById("categoryGameTitle").textContent.split(': ')
-    const questions = await consultQuestions(category[1]);
-    startCategoryGame(category[1],questions);
+    try {
+        const questions = await consultQuestions(category[1]);
+        startCategoryGame(category[1],questions);
+        
+    } catch (error) {
+        alert("Erro ao iniciar a categoria. Tente novamente.");
+            console.error(error);
+        
+    }
 
 });
 
