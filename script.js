@@ -137,8 +137,8 @@ function resetCategoryPredefinition() {
 document.getElementById("restartCategoryGame").addEventListener("click",async () => {
     score=0
     document.getElementById("scoreCount").textContent = 0;
-    category = document.getElementById("categoryGameTitle").textContent.split(': ')
-    const questions = await consultQuestions(category);
+    let category = document.getElementById("categoryGameTitle").textContent.split(': ')
+    const questions = await consultQuestions(category[1]);
     startCategoryGame(category[1],questions);
 
 });
@@ -181,7 +181,6 @@ document.getElementById("submitCategoryGuess").addEventListener("click", async (
         updateScore();
         hintsUsed = 0;
         currentCard++;
-        resetHintsCategory();
         resetHintsCategory();
         if (currentCard < flashcards.length) {
             revealedLetters = Array(flashcards[currentCard].answer.length).fill("_");
@@ -362,7 +361,6 @@ document.getElementById("startGame").addEventListener("click", () => {
         document.getElementById("customizeModal").classList.add("hidden");
         document.getElementById("gameScreen").classList.remove("hidden");
 
-        startGame(true);
         startGame(true);
     }
 });
