@@ -5,7 +5,9 @@ let hintsRemaining = 3;
 let revealedLetters = [];
 let score = 0; // Inicializa a pontuação
 let hintsUsed = 0; // Conta quantas dicas foram usadas
+const loadingSpinner = document.getElementById("loadingSpinner");
 
+consultQuestions();
 
 // Ocultar telas extras ao carregar a página
 window.onload = () => {
@@ -72,9 +74,19 @@ function startCategoryGame(categoryName, questions) {
     loadCategoryCard(); // Carrega a primeira pergunta
 }
 
+function showLoading() {
+  loadingSpinner.classList.remove("hidden");
+}
+
+function hideLoading() {
+  loadingSpinner.classList.add("hidden");
+}
 
 async function consultQuestions(category) {
+    showLoading();
+    
     try {
+
         const response = await fetch(`https://apiedugame-1.onrender.com/category/${category}`);
         if (!response.ok) throw new Error("Erro ao buscar categoria");
 
@@ -83,6 +95,8 @@ async function consultQuestions(category) {
     } catch (error) {
         console.error('Erro ao consultar a categoria: ', error);
         throw error;
+    }finally{
+        hideLoading();
     }
 }
 
