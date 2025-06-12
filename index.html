@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Quizz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela Principal -->
+    <div class="container" id="titleContainer">
+        <h1 class="title">Edu Quizz</h1>
+        <button id="customizeButton">Personalizar Jogo</button>
+        <button id="preDefinitionsButton">Pré-definições</button> <!-- Botão de Pré-definições -->
+    </div>
+
+    <!-- Modal de Personalização -->
+    <div id="customizeModal" class="modal hidden">
+        <h2>Personalize seu jogo</h2>
+        <div id="flashcards">
+            <div class="flashcard-container">
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Descrição" class="description-input">
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Resposta" class="answer-input">
+                    <button class="removeFlashcard">✖</button>
+                </div>
+            </div>
+        </div>
+        <button id="addFlashcard">+ Adicionar</button>
+        <button id="startGame">Começar Jogo</button>
+        <button id="backToMenuCustomize">Voltar</button>
+    </div>
+
+
+
+<!-- Tela de Jogo por Categoria -->
+<div id="categoryGameScreen" class="hidden">
+    <h2 id="categoryGameTitle"></h2> <!-- Nome da Categoria -->
+    <p id="categoryGameDescription"></p> <!-- Descrição atual -->
+    <p id="categoryAnswerPlaceholder"></p> <!-- Traços para a resposta -->
+    <button id="categoryHintButton">Dica (3 restantes)</button> <!-- Botão de dicas -->
+    <input type="text" id="categoryGuessInput" placeholder="Digite sua resposta"> <!-- Campo de resposta -->
+    <button id="submitCategoryGuess">Enviar Resposta</button> <!-- Botão de enviar -->
+    <button id="restartCategoryGame">Recomeçar</button> <!-- Botão de recomeçar -->
+    <button id="backToPreDefinitionsButton">Voltar às Categorias</button> <!-- Botão para voltar -->
+</div>
+
+
+
+
+
+    <!-- Tela do Jogo -->
+    <div id="gameScreen" class="hidden">
+        <h2 id="gameDescription"></h2>
+        <p id="answerPlaceholder"></p>
+        <button id="hintButton">Dica (3 restantes)</button>
+        <br>
+        <input type="text" id="guessInput" placeholder="Digite sua resposta">
+        <br>
+        <button id="submitGuess">Enviar Resposta</button>
+        <button id="restartDuringGame">Recomeçar</button>
+    </div>
+
+
+<!-- Exibição da Pontuação no canto superior esquerdo -->
+<div id="scoreContainer">
+    <p>Pontos: <span id="scoreCount">0</span></p>
+</div>
+
+
+    <!-- Tela Final -->
+    <div id="endScreen" class="hidden">
+        <h2> Parabéns, você finalizou o jogo! </h2>
+        <p>Sua pontuação total foi <span id="finalScore">0</span> pontos.</p>
+        <button id="playAgain">Jogar Novamente</button>
+        <button id="restartGame">Recomeçar</button>
+    </div>
+
+    <!-- Tela Final -->
+    <div id="CategoryEndScreen" class="hidden">
+        <h2> Parabéns, você finalizou o jogo! </h2>
+        <p>Sua pontuação total foi <span id="CategoryfinalScore">0</span> pontos.</p>
+        <button id="CategoryplayAgain">Jogar Novamente</button>
+        <button id="CategoryrestartGame">Recomeçar</button>
+    </div>
+
+
+    
+    <!-- Botão de Ajuda -->
+    <div class="help-container">
+        <button id="helpButton" aria-label="Abrir instruções do jogo">❓</button>
+    </div>
+
+    <!-- Modal de Ajuda -->
+    <div id="helpModal" class="modalHelp hidden">
+        <div class="modal-content">
+            <h2>Como Funciona o Jogo</h2>
+            <p>
+                <strong> Modo Personalizado:</strong>
+            </p>
+            <p>
+                🎯 <strong>Objetivo:</strong><br>
+                Jogue com perguntas que você mesmo pode personalizar, adivinhando palavras com base na descrição apresentada.
+            </p>
+            <p>
+                🛠️ <strong>Como Personalizar:</strong><br>
+                - Clique em "Personalizar Jogo" para adicionar seus próprios flashcards.
+            </p>
+            <p>
+                🎮 <strong>Como Jogar:</strong><br>
+                - Leia a descrição, digite sua resposta e clique em "Enviar Resposta".
+            </p>
+            <p>
+                🆘 <strong>Botão de Dica:</strong><br>
+                - Use o botão "Dica" para revelar letras progressivamente. <br>
+                Nenhuma dica usada = 30 pontos <br>
+                Usou 1 dica = 20 pontos <br>
+                Usou 2 dicas = 10 pontos <br>
+                Usou todas as dicas = 0 pontos
+            </p>
+            <p>
+                🔄 <strong>Reiniciar o Jogo:</strong><br>
+                - Clique em "Jogar Novamente" para reiniciar o jogo com as mesmas descrições. <br>
+                - Clique em "Recomeçar" para começar do zero com novas personalizações. <br>
+                - Ao concluir todas as perguntas, veja sua pontuação total e jogue novamente!
+            </p>
+            <p>
+                ________________________________________
+            </p>
+            <p>
+                <strong> Modo Pré Definições: </strong>
+            </p>
+             <p>
+                🎯 <strong>Objetivo:</strong><br>
+                Jogue com perguntas pré-definidas em temas como Animais, História, Ciência, Esportes e Cinema, adivinhando palavras com base na descrição apresentada.
+            </p>
+             <p>
+                🎮 <strong>Como Jogar:</strong><br>
+                - Escolha uma categoria e responda 5 desafios. <br>
+                - Leia a descrição, digite sua resposta e clique em "Enviar Resposta".
+            </p>
+            <p>
+                🆘 <strong>Botão de Dica:</strong><br>
+                - Use o botão "Dica" para revelar letras progressivamente. <br>
+                Nenhuma dica usada = 30 pontos <br> 
+                Usou 1 dica = 20 pontos <br>
+                Usou 2 dicas = 10 pontos <br>
+                Usou todas as dicas = 0 pontos 
+            </p>
+            <p>
+                🔄 <strong>Reiniciar o Jogo:</strong><br>
+                - Clique em "Jogar Novamente" para reiniciar o jogo com a mesma categoria. <br>
+                - Clique em "Recomeçar" para trocar a categoria. <br>
+                - Ao concluir todas as perguntas, veja sua pontuação total e jogue novamente!
+            </p>
+
+            <button id="closeHelp">Fechar</button>
+        </div>
+    </div>
+
+    <div id="preDefinitionsScreen" class="hidden">
+        <h2>Escolha uma Categoria</h2>
+        <div class="categories-buttons">
+            <button>Animais</button>
+            <button>História</button>
+            <button>Ciência</button>
+            <button>Esportes</button>
+            <button>Cinema</button>
+        </div>
+        <button id="backToMenu">Voltar</button>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
